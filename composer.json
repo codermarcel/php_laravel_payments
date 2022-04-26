@@ -1,0 +1,73 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "repositories": [
+        {
+            "url": "https://github.com/codermarcel/php-encryption",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/codermarcel/EasyRSA.git",
+            "type": "git"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*",
+        "servo/fluidxml": "^1.20",
+        "predis/predis": "^1.0",
+        "coinbase/coinbase": "^2.4",
+        "ramsey/uuid": "^3.3",
+        "aws/aws-sdk-php": "^3.18",
+        "beberlei/assert": "^2.5",
+        "blockchain/blockchain": "^1.2",
+        "braintree/braintree_php": "^3.11",
+        "stripe/stripe-php": "^3.12",
+        "defuse/php-encryption": "dev-master",
+        "paragonie/easyrsa": "dev-master",
+        "php-http/message-factory": "^1.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "symfony/css-selector": "2.8.*|3.0.*",
+        "symfony/dom-crawler": "2.8.*|3.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
